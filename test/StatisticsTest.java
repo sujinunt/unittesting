@@ -1,3 +1,6 @@
+
+
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -30,7 +33,37 @@ public class StatisticsTest {
 		}
 		assertEquals( avg, Statistics.average(x), TOL);
 	}
-	
+       @Test
+       (expected = IllegalArgumentException.class)
+        public void testEmptyArrayVariance() {
+                double[] x = {};
+                Statistics.variance(x);
+    }
+
+    @Test
+    (expected = IllegalArgumentException.class)
+    public void testEmptyArrayCovariance() {
+            double[] x = {};
+            double[] y = {};
+            Statistics.covariance(x, y);
+    }
+     @Test
+     public void testVeryLargeArrayVariance(){
+            double[] x = new double[(int)1e7];
+            java.util.Arrays.fill(x, 10);
+            assertEquals(0, Statistics.variance(x), TOL);
+     }
+     @Test
+     public void testVeryLargeArrayCovariance(){
+             double[] x = new double[(int)1e7];
+              double[] y = new double[(int)1e7];
+               java.util.Arrays.fill(x, 10);
+               java.util.Arrays.fill(y, 10);
+               assertEquals(0, Statistics.covariance(x, y), TOL);
+         
+               
+     }
+     
 	//TODO add test cases:
 	//1. slightly illegal case. What if array is empty?
 	//2. extrame case: very large array or very different values
