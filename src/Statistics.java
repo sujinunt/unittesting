@@ -1,4 +1,6 @@
+
 import java.util.Arrays;
+import java.lang.Math;
 
 /**
  * Methods for computing some common statistics,
@@ -12,7 +14,7 @@ public class Statistics {
 	 * @return the arithmetic average of values in x, or 0 if x is empty.
 	 */
 	public static double average(double[] x) {
-		// Some fun: sum using a Stream instead of a loop.
+		// Some fun: instead of a loop.
 		double sum = Arrays.stream(x).sum();
 		return sum/x.length;
 	}
@@ -26,9 +28,17 @@ public class Statistics {
 	 * @throws IllegalArgumentException if x is empty
 	 */
 	public static double variance(double[] x) {
-		//TODO write the code
-		return 0;
-	}
+         if (x.length == 0) {
+             throw new IllegalArgumentException("There is no any variance in the array.");
+            }
+        double sum = 0D;
+        for (double vari : x) {
+            sum += vari * vari;
+           }
+         return sum / x.length - Math.pow(average(x), 2);
+        
+          }
+        
 	
 	/**
 	 * Compute the covariance between arrays x and y.
@@ -49,8 +59,19 @@ public class Statistics {
 	 * @throws IllegalArgumentException if arrays are not same length or length is 0.
 	 */
 	public static double covariance(double[] x, double[] y) {
-		//TODO write the code
-		return 0;
-	}
+         if(x.length == 0 & y.length == 0){
+             throw new IllegalArgumentException("There is no any covariance in the array.");
+           }
+        double sum = 0D;
+        for (int i =0; i<x.length;i++) {
+            double xCovari = x[i] - average(x);
+            double yCovari = y[i] - average(y);
+            sum += xCovari * yCovari;   
+        }
+        return sum/x.length;
+            
+        }
+	 	
 	
 }
+
