@@ -13,9 +13,13 @@ public class StringUtil {
 	 */
 	public static int indexOf(String arg, String[] array) {
 		int index = -1;
+		arg = arg.toLowerCase();
 		for(int k=0; k<array.length; k++) {
-			if (array[k].equals(arg)) return k;
+			array[k] = array[k].toLowerCase();
+			if (array[k].equals(arg)) index = k;
+			else if (array.length == 0) break;
+			else continue;
 		}
-		return -1;
+		return index;
 	}
 }
