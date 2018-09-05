@@ -1,13 +1,13 @@
 /**
  * Some linear algebra methods, for testing.
- * 
+ * ArrayMath that compute product of two vectors.
  * @author Jim
- *
+ * @author Sujinunt
  */
 public class ArrayMath {
 
 	/**
-	 * Compute dot product of two vectors.
+	 * 
 	 * The vectors must have the same length.
 	 * 
 	 * @param x first vector to multiply
